@@ -1,0 +1,42 @@
+{
+  "name": "Express-with-Passport-Local-Strategy-Login",
+  "version": "0.1.0",
+  "author": {
+    "name": "Timothy Tocci",
+    "email": "timtocci@ymail.com",
+    "url": "timothytocci.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "express",
+    "passport",
+    "websockets",
+    "login",
+    "local"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/timtocci/Express-with-Passport-Local-Strategy-Login.git"
+  },
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.13.2",
+    "connect-ensure-login": "^0.1.1",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
+    "express-session": "^1.13.0",
+    "hbs": "~3.1.0",
+    "morgan": "~1.6.1",
+    "node-simple-router": "^0.10.0",
+    "node-sqlite-purejs": "0.0.2",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "~2.3.0",
+    "sqlstring": "^2.0.1",
+    "validator": "^5.4.0",
+    "xss-filters": "^1.2.6"
+  }
+}
