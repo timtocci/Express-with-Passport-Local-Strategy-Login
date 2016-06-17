@@ -1,4 +1,7 @@
 <form action="/register" method="post">
+    {{#message}}
+        <h3 class="{{style}}">{{text}}</h3>
+    {{/message}}
     <table>
         <tr>
             <td><label>User Name:</label></td>

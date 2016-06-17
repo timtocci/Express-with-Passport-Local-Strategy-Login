@@ -5,12 +5,30 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
+// https://github.com/yahoo/xss-filters/wiki
+var xssFilters = require('xss-filters');
+
 // should change this in your app to something more random
 var salt = 'sduirjtgybvn93784wr56ynbhp8wuyhmvnrspo8tuyhngupw468uwoui6htgpow8urh6tnpowproithjp3o8ru6hpo8v8mumpo8wunmbv8pwynump89sumyh8pybnw8wnmh';
 
 router.get('/login', function(req, res, next) {
     // check for errmsg or infmsg
-    res.render('login', { title: 'Express with Passport Local Strategy Login' });
+    console.log(req.query);
+    var message = {};
+    if (req.query.errmsg) {
+        message.style = 'err';
+        message.text = xssFilters.inHTMLData(req.query.errmsg);
+    }
+    if (req.query.infmsg) {
+        message.style = 'inf';
+        message.text = xssFilters.inHTMLData(req.query.infmsg);
+    }
+    if (req.query.errmsg && req.query.infmsg) {
+        // get var tampering maybe log attempt
+        res.status(400);
+        res.redirect('/');
+    }
+    res.render('login', {title: 'Express with Passport Local Strategy Login', message: message});
 });
 
 router.post('/login', function(req,res,next){
@@ -41,7 +59,12 @@ router.get('/logout', function(req, res, next) {
 
 router.get('/register', function(req, res, next) {
     // check for errmsg
-    res.render('register', { title: 'Express with Passport Local Strategy Login' });
+    var message = {};
+    if (req.query.errmsg) {
+        message.style = 'err';
+        message.text = xssFilters.inHTMLData(req.query.errmsg);
+    }
+    res.render('register', {title: 'Express with Passport Local Strategy Login', message: message});
 });
 router.post('/register', function(req, res, next) {
     var data = require('../data');
@@ -64,7 +87,6 @@ router.post('/register', function(req, res, next) {
             }else{
                 res.redirect('/login?infmsg=1');
             }
-
         });
     }else{
         res.redirect('/register?errmsg=Passwords%20do%20not%20match');
@@ -75,6 +97,11 @@ router.post('/register', function(req, res, next) {
 router.get('/profile',
     require('connect-ensure-login').ensureLoggedIn(),
     function(req, res){
+        if (req.user) {
+            req.user.name = xssFilters.inHTMLData(req.user.name);
+            req.user.email = xssFilters.inHTMLData(req.user.email);
+            req.user.is = xssFilters.inHTMLData(req.user.id);
+        }
         res.render('profile', { title: 'Express with Passport Local Strategy Login',  user: req.user });
     });
 

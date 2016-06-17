@@ -7,4 +7,6 @@ Also adds a very basic websocket server provided by node-simple-router for real 
 has no fallback or transport schema - write your own. If you want to remove the socket server erase: the last 
 eight lines in bin/www; bin/socks.js; public/js/client.js. 
 
+To start just type npm start
+
 Hack n go version - NOT NEARLY READY FOR PRODUCTION!

@@ -1,4 +1,8 @@
 <form action="/login" method="post">
+    {{#message}}
+        <h3 class="{{style}}">{{text}}</h3>
+    {{/message}}
+
     <table>
         <tr>
             <td><label>Username:</label></td>
