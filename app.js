@@ -58,7 +58,8 @@ app.use(cookieParser());
 app.use(require('express-session')({
     secret: 'dirty little secret',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    name: 'sid'
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
