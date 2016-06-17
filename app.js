@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var helmet = require('helmet')
 
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
@@ -33,11 +34,17 @@ passport.deserializeUser(function(id, cb) {
         cb(null, user);
     });
 });
-
-var routes = require('./routes/index');
-//var users = require('./routes/users');
-var auth = require('./routes/auth');
 var app = express();
+
+app.use(helmet.noCache());
+app.use(helmet.frameguard());
+app.use(helmet.xssFilter());
+app.use(helmet.hidePoweredBy({setTo: 'PHP/5.6.3'}));
+app.use(helmet.ieNoOpen());
+app.use(helmet.noSniff());
+// hurts performance
+app.use(helmet.noCache({noEtag: true}));
+app.use(helmet.dnsPrefetchControl({allow: false}));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -48,12 +55,20 @@ app.use(require('morgan')('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(require('express-session')({ secret: 'dirty little secret', resave: false, saveUninitialized: false }));
+app.use(require('express-session')({
+    secret: 'dirty little secret',
+    resave: false,
+    saveUninitialized: false
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+var routes = require('./routes/index');
+//var users = require('./routes/users');
+var auth = require('./routes/auth');
 app.use('/', routes);
 app.use('/', auth);
 
