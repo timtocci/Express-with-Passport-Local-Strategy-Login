@@ -100,7 +100,7 @@ router.post('/register', parseForm, csrfProtection, function (req, res, next) {
             if(err){
                 res.redirect('/register?errmsg=' + encodeURIComponent(err));
             }else{
-                res.redirect('/login?infmsg=1');
+                res.redirect('/login?infmsg=Registration%20Successful');
             }
         });
     }else{
