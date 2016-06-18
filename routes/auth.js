@@ -5,13 +5,18 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
+var bodyParser = require('body-parser');
+var csurf = require('csurf');
+var csrfProtection = csurf({cookie: false});
+var parseForm = bodyParser.urlencoded({extended: false});
+
 // https://github.com/yahoo/xss-filters/wiki
 var xssFilters = require('xss-filters');
 
 // should change this in your app to something more random
 var salt = 'sduirjtgybvn93784wr56ynbhp8wuyhmvnrspo8tuyhngupw468uwoui6htgpow8urh6tnpowproithjp3o8ru6hpo8v8mumpo8wunmbv8pwynump89sumyh8pybnw8wnmh';
 
-router.get('/login', function(req, res, next) {
+router.get('/login', csrfProtection, function (req, res, next) {
     // check for errmsg or infmsg
     console.log(req.query);
     var message = {};
@@ -28,10 +33,14 @@ router.get('/login', function(req, res, next) {
         res.status(400);
         res.redirect('/');
     }
-    res.render('login', {title: 'Express with Passport Local Strategy Login', message: message});
+    res.render('login', {
+        title: 'Express with Passport Local Strategy Login',
+        message: message,
+        csrfToken: req.csrfToken()
+    });
 });
 
-router.post('/login', function(req,res,next){
+router.post('/login', parseForm, csrfProtection, function (req, res, next) {
     // change password to hash before passing it on
     var crypto = require('crypto');
     var hash = crypto.createHash('sha512');

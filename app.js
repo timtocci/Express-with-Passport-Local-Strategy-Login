@@ -4,7 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var helmet = require('helmet')
+var helmet = require('helmet');
+
+
+
 
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
@@ -36,6 +39,7 @@ passport.deserializeUser(function(id, cb) {
 });
 var app = express();
 
+
 app.use(helmet.noCache());
 app.use(helmet.frameguard());
 app.use(helmet.xssFilter());
@@ -61,6 +65,8 @@ app.use(require('express-session')({
     saveUninitialized: false,
     name: 'sid'
 }));
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());

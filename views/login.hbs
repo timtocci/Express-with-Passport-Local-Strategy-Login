@@ -2,7 +2,7 @@
     {{#message}}
         <h3 class="{{style}}">{{text}}</h3>
     {{/message}}
-
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
     <table>
         <tr>
             <td><label>Username:</label></td>
