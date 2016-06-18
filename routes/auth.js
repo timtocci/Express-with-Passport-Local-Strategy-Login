@@ -5,6 +5,8 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
+// csurf stuff
+// https://www.npmjs.com/package/csurf
 var bodyParser = require('body-parser');
 var csurf = require('csurf');
 var csrfProtection = csurf({cookie: false});
@@ -66,16 +68,20 @@ router.get('/logout', function(req, res, next) {
     res.redirect('/');
 });
 
-router.get('/register', function(req, res, next) {
+router.get('/register', csrfProtection, function (req, res, next) {
     // check for errmsg
     var message = {};
     if (req.query.errmsg) {
         message.style = 'err';
         message.text = xssFilters.inHTMLData(req.query.errmsg);
     }
-    res.render('register', {title: 'Express with Passport Local Strategy Login', message: message});
+    res.render('register', {
+        title: 'Express with Passport Local Strategy Login',
+        message: message,
+        csrfToken: req.csrfToken()
+    });
 });
-router.post('/register', function(req, res, next) {
+router.post('/register', parseForm, csrfProtection, function (req, res, next) {
     var data = require('../data');
     if(req.body.password === req.body.passwordagain){
         // passwords match - now hashify
