@@ -26,6 +26,7 @@ Uses:
 *  sqlstring     https://www.npmjs.com/package/sqlstring
 *  validator     https://www.npmjs.com/package/validator
 *  xss-filters     https://www.npmjs.com/package/xss-filters
+*  csurf     https://www.npmjs.com/package/csurf
 
 ---
 To start just type npm start
