@@ -93,11 +93,3 @@ function onListening() {
 
 
 
-var ws = require('node-simple-router/lib/ws');
-var wsServer = ws.createWebSocketServer(function (websocket) {
-		// all socket work goes in socks.js
-		require('./socks.js')(websocket);
-	});
-// start up the socket server with the app handle created earlier
-wsServer.listen(server);
-console.log('WebSocket server running on port 3000');

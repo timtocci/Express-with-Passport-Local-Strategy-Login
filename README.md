@@ -3,9 +3,6 @@ https://github.com/timtocci/Express-with-Passport-Local-Strategy-Login
 
 Basic Express application with Passport Local Strategy login that uses sqlite (pure js) for data storage.
 
-Also adds a very basic websocket server provided by node-simple-router for real time push. The websocket server 
-has no fallback or transport schema - write your own. If you want to remove the socket server erase: the last 
-eight lines in bin/www; bin/socks.js; public/js/client.js. 
 
 ---
 Uses:
@@ -18,7 +15,6 @@ Uses:
 *  debug    https://www.npmjs.com/package/debug
 *  helmet    https://www.npmjs.com/package/helmet
 *  morgan    https://www.npmjs.com/package/morgan
-*  node-simple-router    https://www.npmjs.com/package/node-simple-router
 *  node-sqlite-purejs    https://www.npmjs.com/package/node-sqlite-purejs
 *  passport    http://passportjs.org/
 *  passport-local     https://www.npmjs.com/package/passport-local
