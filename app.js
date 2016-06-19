@@ -12,8 +12,6 @@ var helmet = require('helmet');
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 
-// https://github.com/yahoo/xss-filters/wiki
-//var xssFilters = require('xss-filters');
 
 var data = require('./data');
 
@@ -89,7 +87,6 @@ app.use(function(req, res, next) {
 // error handlers
 app.use(function (err, req, res, next) {
     if (err.code !== 'EBADCSRFTOKEN') return next(err)
-
     // handle CSRF token errors here
     res.status(403)
     res.send('form tampered with')

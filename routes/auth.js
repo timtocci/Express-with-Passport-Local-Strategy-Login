@@ -19,21 +19,17 @@ var xssFilters = require('xss-filters');
 var salt = 'sduirjtgybvn93784wr56ynbhp8wuyhmvnrspo8tuyhngupw468uwoui6htgpow8urh6tnpowproithjp3o8ru6hpo8v8mumpo8wunmbv8pwynump89sumyh8pybnw8wnmh';
 
 router.get('/login', csrfProtection, function (req, res, next) {
-    // check for errmsg or infmsg
-    console.log(req.query);
     var message = {};
-    if (req.query.errmsg) {
-        message.style = 'err';
-        message.text = xssFilters.inHTMLData(req.query.errmsg);
-    }
-    if (req.query.infmsg) {
-        message.style = 'inf';
-        message.text = xssFilters.inHTMLData(req.query.infmsg);
-    }
     if (req.query.errmsg && req.query.infmsg) {
         // get var tampering maybe log attempt
         res.status(400);
         res.redirect('/');
+    } else if (req.query.errmsg) {
+        message.style = 'err';
+        message.text = xssFilters.inHTMLData(req.query.errmsg);
+    } else if (req.query.infmsg) {
+        message.style = 'inf';
+        message.text = xssFilters.inHTMLData(req.query.infmsg);
     }
     res.render('login', {
         title: 'Express with Passport Local Strategy Login',
@@ -69,7 +65,6 @@ router.get('/logout', function(req, res, next) {
 });
 
 router.get('/register', csrfProtection, function (req, res, next) {
-    // check for errmsg
     var message = {};
     if (req.query.errmsg) {
         message.style = 'err';
