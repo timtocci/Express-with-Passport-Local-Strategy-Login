@@ -13,6 +13,8 @@ var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 
 
+var headerchange = require('./mymods/hdrcng')
+
 var data = require('./data');
 
 passport.use(new Strategy(
@@ -37,15 +39,15 @@ passport.deserializeUser(function(id, cb) {
 });
 var app = express();
 
-
+app.use(headerchange('Server', 'Apache/2.4.7 (Ubuntu) PHP/5.5.9-1ubuntu4.14 OpenSSL/1.0.1f'));
 app.use(helmet.noCache());
 app.use(helmet.frameguard());
 app.use(helmet.xssFilter());
-app.use(helmet.hidePoweredBy({setTo: 'PHP/5.6.3'}));
+app.use(helmet.hidePoweredBy({setTo: 'PHP/5.5.9'}));
 app.use(helmet.ieNoOpen());
 app.use(helmet.noSniff());
 // hurts performance
-app.use(helmet.noCache({noEtag: true}));
+app.use(helmet.noCache({noEtag: true}));    // <-- Not crushing ETag!
 app.use(helmet.dnsPrefetchControl({allow: false}));
 
 app.set('views', path.join(__dirname, 'views'));
@@ -74,6 +76,7 @@ app.use(passport.session());
 var routes = require('./routes/index');
 //var users = require('./routes/users');
 var auth = require('./routes/auth');
+
 app.use('/', routes);
 app.use('/', auth);
 

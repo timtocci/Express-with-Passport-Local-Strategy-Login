@@ -1,7 +1,7 @@
 # Express-with-Passport-Local-Strategy-Login
 https://github.com/timtocci/Express-with-Passport-Local-Strategy-Login
 
-Basic Express application with Passport Local Strategy login that uses sqlite (pure js) for data storage.
+Basic Express application with Passport Local Strategy login that uses sqlite (pure js) for data storage and hbs for templates.
 
 
 ---
