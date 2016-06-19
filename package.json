@@ -10,7 +10,8 @@
   "keywords": [
     "express",
     "passport",
-    "websockets",
+    "sqlite",
+    "purejs",
     "login",
     "local"
   ],
