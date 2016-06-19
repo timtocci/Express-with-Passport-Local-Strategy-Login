@@ -61,7 +61,7 @@ app.use(require('express-session')({
     secret: 'dirty little secret',
     resave: false,
     saveUninitialized: false,
-    name: 'sid'
+    name: 'PHPSESSID'
 }));
 
 
