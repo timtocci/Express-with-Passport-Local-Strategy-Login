@@ -39,6 +39,7 @@ passport.deserializeUser(function(id, cb) {
 });
 var app = express();
 
+app.use(headerchange('Connection', null, true));
 app.use(headerchange('Keep-Alive', 'timout=5, max=100'));
 app.use(headerchange('Server', 'Apache/2.4.7 (Ubuntu) PHP/5.5.9-1ubuntu4.14 OpenSSL/1.0.1f'));
 app.use(helmet.noCache());

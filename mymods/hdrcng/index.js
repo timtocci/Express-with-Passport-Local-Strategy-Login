@@ -1,9 +1,17 @@
 /**
  * Created by Timothy Tocci on 019, Jun 19, 2016.
  */
-module.exports = function (header, headerval) {
+module.exports = function (header, headerval, boolRem) {
+    if (boolRem === undefined) {
+        boolRem = false;
+    }
     return function (req, res, next) {
-        res.set(header, headerval);
+        if (boolRem) {
+            res.removeHeader(header);
+        } else {
+            res.set(header, headerval);
+        }
+
         next();
     };
 }
