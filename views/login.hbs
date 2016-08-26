@@ -5,16 +5,16 @@
     <input type="hidden" name="_csrf" value="{{csrfToken}}">
     <table>
         <tr>
-            <td><label>Username:</label></td>
+            <td><label>{{texts.USERNAME}}:</label></td>
             <td><input type="text" name="username"/><br/></td>
         </tr>
         <tr>
-            <td><label>Password:</label></td>
+            <td><label>{{texts.PASSWORD}}:</label></td>
             <td><input type="password" name="password"/></td>
         </tr>
         <tr>
             <td><input type="submit" value="Submit"/></td>
-            <td>Or <a href="/register">Register!</a></td>
+            <td><a href="/register">{{texts.REGISTER}}!</a></td>
         </tr>
     </table>
 </form>

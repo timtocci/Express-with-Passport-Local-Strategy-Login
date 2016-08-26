@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var helmet = require('helmet');
-
+var i18n = require("i18n-express");
 
 
 
@@ -68,6 +68,10 @@ app.use(require('express-session')({
     name: 'PHPSESSID'
 }));
 
+app.use(i18n({
+    translationsPath: path.join(__dirname, 'i18n'),
+    siteLangs: ["en","es"]
+}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 

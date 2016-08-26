@@ -1,17 +1,17 @@
 <h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<p>{{texts.WELCOME_TO}}{{title}}</p>
 {{^user}}
-    <p><a href="/login">Login</a> or <a href="/register">Register</a> </p>
+    <p><a href="/login">{{texts.LOG_IN}}</a> | <a href="/register">{{texts.REGISTER}}</a> </p>
 {{/user}}
 
 
 {{#user}}
     <p>
-        ID: {{ id }}<br/>
-        Username: {{ username }}<br/>
-        Email: {{ email }}<br/>
+        {{texts.ID}}: {{ id }}<br/>
+        {{texts.USERNAME}}: {{ username }}<br/>
+        {{texts.EMAIL}}: {{ email }}<br/>
     </p>
-    <a href="/logout">Log out</a>
+    <a href="/logout">{{texts.LOG_OUT}}</a>
 
 {{/user}}
 

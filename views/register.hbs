@@ -5,27 +5,27 @@
     <input type="hidden" name="_csrf" value="{{csrfToken}}">
     <table>
         <tr>
-            <td><label>User Name:</label></td>
+            <td><label>{{texts.USERNAME}}:</label></td>
             <td><input type="text" name="username"/><br/></td>
         </tr>
         <tr>
-            <td><label>Email:</label></td>
+            <td><label>{{texts.EMAIL}}:</label></td>
             <td><input type="email" name="email"/><br/></td>
         </tr>
         <tr>
-            <td><label>Password:</label></td>
+            <td><label>{{texts.PASSWORD}}:</label></td>
             <td><input type="password" name="password"/></td>
         </tr>
         <tr>
-            <td><label>Password Again:</label></td>
+            <td><label>{{texts.PASSWORD_AGAIN}}:</label></td>
             <td><input type="password" name="passwordagain"/></td>
         </tr>
         <tr>
             <td>
-                <button type="submit" >Submit</button>
+                <button type="submit" >{{texts.SUBMIT}}</button>
             </td>
             <td>
-                <a href="/">Cancel</a>
+                <a href="/">{{texts.CANCEL}}</a>
             </td>
         </tr>
     </table>

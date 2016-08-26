@@ -1,0 +1,13 @@
+{
+  "WELCOME_TO": "Bienvenido a",
+  "LOG_IN": "Entrar",
+  "LOG_OUT": "Salir",
+  "REGISTER":  "Registro",
+  "CANCEL": "Cancelar",
+  "USERNAME": "nombre de usuario",
+  "PASSWORD": "contraseña",
+  "PASSWORD AGAIN": "contraseña de nuevo",
+  "ID": "CARNÉ DE IDENTIDAD",
+  "EMAIL": "Email",
+  "SUBMIT": "Enviar"
+}

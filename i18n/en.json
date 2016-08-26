@@ -1,0 +1,13 @@
+{
+  "WELCOME_TO": "Welcome to ",
+  "LOG_IN": "Log in",
+  "LOG_OUT": "Log out",
+  "REGISTER": "Register",
+  "CANCEL": "Cancel",
+  "USERNAME": "Username",
+  "PASSWORD": "Password",
+  "PASSWORD AGAIN": "Password Again",
+  "ID": "ID",
+  "EMAIL": "Email",
+  "SUBMIT": "Submit"
+}
