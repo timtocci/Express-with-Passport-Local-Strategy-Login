@@ -12,6 +12,7 @@ Uses:
 *  connect-ensure-login    https://www.npmjs.com/package/connect-ensure-login
 *  cookie-parser    https://www.npmjs.com/package/cookie-parser
 *  hbs    https://www.npmjs.com/package/hbs
+*  i18n-express    https://www.npmjs.com/package/i18n-express
 *  debug    https://www.npmjs.com/package/debug
 *  helmet    https://www.npmjs.com/package/helmet
 *  morgan    https://www.npmjs.com/package/morgan
