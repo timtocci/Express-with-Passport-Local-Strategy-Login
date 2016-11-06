@@ -32,6 +32,7 @@
     "express-session": "^1.13.0",
     "hbs": "~3.1.0",
     "helmet": "^2.1.1",
+    "i18n-express": "^1.0.4",
     "morgan": "~1.6.1",
     "node-sqlite-purejs": "0.0.2",
     "passport": "^0.3.2",
