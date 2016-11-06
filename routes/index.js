@@ -13,17 +13,23 @@ router.get('/', function (req, res, next) {
         req.user.name = xssFilters.inHTMLData(req.user.name);
         req.user.email = xssFilters.inHTMLData(req.user.email);
         req.user.is = xssFilters.inHTMLData(req.user.id);
-    }
-    res.render('index', {title: 'Express with Passport Local Strategy Login', user: req.user});
+		res.render('dash', {title: 'Express with Passport Local Strategy Login', user: req.user});
+    }else{
+		res.render('frontpublic', {title: 'Express with Passport Local Strategy Login'});
+	}
+    
 });
 router.get('/index.php', function (req, res, next) {
 //router.get('/', require('connect-ensure-login').ensureLoggedIn(), function(req, res, next) {
     if (req.user) {
+        // maybe something was overlooked
         req.user.name = xssFilters.inHTMLData(req.user.name);
         req.user.email = xssFilters.inHTMLData(req.user.email);
         req.user.is = xssFilters.inHTMLData(req.user.id);
-    }
-    res.render('index', {title: 'Express with Passport Local Strategy Login', user: req.user});
+		res.render('dash', {title: 'Express with Passport Local Strategy Login', user: req.user});
+    }else{
+		res.render('frontpublic', {title: 'Express with Passport Local Strategy Login'});
+	}
 });
 router.get('/htaccess', function (req, res, next) {
     // look! John forgot to erase the old one!
